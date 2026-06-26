@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bedtrack-api
+  namespace: bedtrack
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bedtrack-api
+  template:
+    metadata:
+      labels:
+        app: bedtrack-api
+    spec:
+      containers:
+      - name: api
+        image: bedtrack/api:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: REDIS_HOST
+          value: "redis-service"
+        - name: REDIS_PORT
+          value: "6379"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bedtrack-api-service
+  namespace: bedtrack
+spec:
+  selector:
+    app: bedtrack-api
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
