@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  gateway:
+    build: ./ApiGateway
+    ports:
+      - "80:80"
+  bed-service:
+    build: ./BedService
+  patient-service:
+    build: ./PatientService
+  report-service:
+    build: ./ReportService
+  auth-service:
+    build: ./AuthService
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
