@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bedtrack-desa
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bedtrack-qa
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bedtrack-uat
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bedtrack-prod

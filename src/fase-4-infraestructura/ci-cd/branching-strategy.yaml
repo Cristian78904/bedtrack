@@ -1,0 +1,31 @@
+# BedTrack - Estrategia de Branching (Git Flow)
+
+Ramas Principales:
+  main:
+    proposito: Código en producción
+    proteccion: Requiere PR y CI/CD exitoso
+    despliegue: Producción
+    
+  develop:
+    proposito: Integración de desarrollo
+    proteccion: Requiere PR y tests automáticos
+    despliegue: Desarrollo (Desa)
+
+Ramas de Soporte:
+  feature/*:
+    origen: develop
+    destino: develop
+    proposito: Desarrollo de nuevas funcionalidades
+    despliegue: Local
+    
+  release/*:
+    origen: develop
+    destino: main
+    proposito: Preparación de releases
+    despliegue: QA y UAT
+    
+  hotfix/*:
+    origen: main
+    destino: main y develop
+    proposito: Correcciones urgentes
+    despliegue: UAT y Producción

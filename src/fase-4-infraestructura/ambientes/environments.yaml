@@ -1,0 +1,31 @@
+# BedTrack - Ambientes y Configuración
+
+Ambientes:
+  Desarrollo (Desa):
+    proposito: Desarrollo local y pruebas unitarias
+    servidores: 1 nodo (t2.micro)
+    base_datos: SQL Server LocalDB
+    url: desa.bedtrack.com
+    rama: develop
+    
+  Testing/QA:
+    proposito: Pruebas funcionales y de integración
+    servidores: 2 nodos (t2.medium)
+    base_datos: RDS SQL Server (1 instancia)
+    url: qa.bedtrack.com
+    rama: release/*
+    
+  UAT (Pre-producción):
+    proposito: Pruebas de usuario y validación final
+    servidores: 2 nodos (t2.large)
+    base_datos: RDS SQL Server (1 Master + 1 Replica)
+    url: uat.bedtrack.com
+    rama: main (pre-release)
+    
+  Producción:
+    proposito: Entorno vivo con usuarios reales
+    servidores: 3+ nodos (m5.large)
+    base_datos: RDS SQL Server (1 Master + 2 Replicas)
+    cache: Redis Cluster
+    url: bedtrack.com
+    rama: main
